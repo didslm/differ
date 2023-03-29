@@ -13,8 +13,11 @@ composer require didslm/differ
 ```php
 use Didslm\Differ\Differ;
 
-$changeSet = Differ::diff($object1, $object2);
+Differ::setBase($object);
 
+//do some changes to $object
+
+$changeSet = Differ::getChanges($object);
 // $changeSet is an array of changes
 
 $hasChanges = Differ::hasChanges($object1, $object2); // bool

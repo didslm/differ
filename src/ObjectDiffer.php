@@ -16,6 +16,14 @@ class ObjectDiffer implements DifferInterface
 
     public function compare(object|array $compare): bool
     {
+        if (is_object($this->baseObject) xor is_object($compare)) {
+            throw new \TypeError('Cannot compare two different types');
+        }
+
+        if (is_object($this->baseObject) && get_class($this->baseObject) !== get_class($compare)) {
+            throw new \TypeError('Cannot compare two different objects');
+        }
+
         return md5(serialize($this->baseObject)) !== md5(serialize($compare));
     }
 

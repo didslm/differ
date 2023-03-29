@@ -4,19 +4,32 @@ namespace Didslm\Differ;
 
 class Differ
 {
-    public static function diff(object|array $base, object|array $compare): array
-    {
-        $differ = new ObjectDiffer();
-        $differ->setBase($base);
+    private static ?ObjectDiffer $instance = null;
 
-        return $differ->getChanges($compare);
+    private function __construct() {}
+    public static function setBase(object|array $base): void
+    {
+        if (self::$instance === null) {
+            self::$instance = new ObjectDiffer();
+        }
+
+        self::$instance->setBase($base);
+    }
+    public static function getChanges(object|array $compare): array
+    {
+        if (self::$instance === null) {
+            throw new \Exception('You must set a base object before comparing');
+        }
+
+        return self::$instance->getChanges($compare);
     }
 
-    public static function hasChanges(object|array $base, object|array $compare): bool
+    public static function hasChanges(object|array $compare): bool
     {
-        $differ = new ObjectDiffer();
-        $differ->setBase($base);
+        if (self::$instance === null) {
+            throw new \Exception('You must set a base object before comparing');
+        }
 
-        return $differ->hasChanges($compare);
+        return self::$instance->hasChanges($compare);
     }
 }
