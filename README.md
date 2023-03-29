@@ -20,7 +20,7 @@ Differ::setBase($object);
 $changeSet = Differ::getChanges($object);
 // $changeSet is an array of changes
 
-$hasChanges = Differ::hasChanges($object1, $object2); // bool
+$hasChanges = Differ::hasChanges($object); // bool
 ```
 
 
