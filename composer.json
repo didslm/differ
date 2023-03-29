@@ -1,0 +1,22 @@
+{
+    "name": "didslm/differ",
+    "description": "Object Change Detector is a lightweight PHP library designed to efficiently compare two instances of an object, detecting changes in their data. By utilizing the MD5 hashing algorithm, the library quickly determines whether the loaded and updated data are different, making it a valuable tool for a variety of applications, including version control, change tracking, and auditing.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Didslm\\Differ\\": "src/"
+            "Didslm\\Differ\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Did",
+            "email": "diarselimi92@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "@dev"
+    }
+}
